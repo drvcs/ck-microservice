@@ -1,0 +1,45 @@
+swagger: '2.0'
+info:
+  version: 1.0.0
+  title: myapp
+  description: My cool app
+basePath: /customer/microservices
+tags:
+  - name: time
+    description: Simple example endpoints
+  - name: Specification
+    description: The swagger API specification
+
+consumes:
+  - application/json
+produces:
+  - application/json
+
+
+definitions:
+  ExampleBody:
+    type: object
+    title: example
+    required:
+      - name
+    properties:
+      name:
+        type: string
+        example: no_stress
+
+paths:
+  /time:
+    get:
+      tags:
+        - Database Time
+      description: Returns current database time
+      responses:
+        200:
+          description: Returns current database time
+  /docs:
+    get:
+      tags:
+        - Specification
+      responses:
+        200:
+          description: Return the API specification

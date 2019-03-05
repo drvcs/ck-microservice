@@ -1,0 +1,25 @@
+version: '3.5'
+
+services:
+  app:
+    container_name: ck-temporacle
+    hostname: ck-temporacle
+    environment:
+      - "TZ=America/Bogota"
+    build: .
+    ports:
+      - "3004:80"
+      - "9229:9229"
+    env_file:
+      - .env
+    volumes:
+      - .:/var/app
+      - /var/app/node_modules
+    external_links:
+      - elasticsearch
+    networks:
+      - net-common
+
+networks:
+  net-common:
+    external: true
